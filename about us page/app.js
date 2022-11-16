@@ -16,29 +16,22 @@ menu_item.forEach((item) => {
 
 // progress
 
-let calcScrollValue = () => {
-    let scrollProgress = document.getElementById("progress");
-    let progressValue = document.getElementById("progress-value");
-    let pos = document.documentElement.scrollTop;
-    let calcHeight =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight;
-    let scrollValue = Math.round((pos * 100) / calcHeight);
-    if (pos > 100) {
-      scrollProgress.style.display = "grid";
-    } else {
-      scrollProgress.style.display = "none";
-    }
-    scrollProgress.addEventListener("click", () => {
-      document.documentElement.scrollTop = 0;
-    });
-    scrollProgress.style.background = `conic-gradient(#6bc1ff ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
-  };
-  
-  window.onscroll = calcScrollValue;
-  window.onload = calcScrollValue;
+var scroll = this.document.querySelector('.scrollTop');
 
-// end of progress
+window.addEventListener('scroll', function() {
+  scroll.classList.toggle('active', window.scrollY > 300)
+
+  
+})
+
+scroll.addEventListener('click', function () {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+})
+
+// end progress
 
 // scroll animation
 
